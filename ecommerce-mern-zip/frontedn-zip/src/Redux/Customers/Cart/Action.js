@@ -47,6 +47,7 @@ console.log("add item to cart ",data)
     });
   }
 };
+
 export const getCart = (jwt) => async (dispatch) => {
   try {
     dispatch({ type: GET_CART_REQUEST });

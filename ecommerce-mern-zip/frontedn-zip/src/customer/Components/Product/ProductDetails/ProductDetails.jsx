@@ -25,19 +25,19 @@ const product = {
   images: [
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
-      alt: "Two each of gray, white, and black shirts laying flat.",
+      alt: "Two each of gray, white, and black shirts laying flat."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
-      alt: "Model wearing plain black basic tee.",
+      alt: "Model wearing plain black basic tee."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
-      alt: "Model wearing plain gray basic tee.",
+      alt: "Model wearing plain gray basic tee."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
-      alt: "Model wearing plain white basic tee.",
+      alt: "Model wearing plain white basic tee."
     },
   ],
   colors: [
@@ -175,7 +175,8 @@ export default function ProductDetails() {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-6 sm:grid-cols-8 lg:grid-cols-10">
-                      {product.sizes.map((size) => (
+                      {
+                      product?.sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
                           value={size}
@@ -238,6 +239,7 @@ export default function ProductDetails() {
                 <Button
                   variant="contained"
                   type="submit"
+   
                   sx={{ padding: ".8rem 2rem", marginTop: "2rem" }}
                 >
                   Add To Cart

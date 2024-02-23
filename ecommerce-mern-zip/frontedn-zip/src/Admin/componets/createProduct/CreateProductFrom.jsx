@@ -84,7 +84,11 @@ const jwt=localStorage.getItem("jwt")
     e.preventDefault();
     dispatch(createProduct({data:productData,jwt}))
     console.log(productData);
+   
+    
   };
+
+ 
 
   // const handleAddProducts=(data)=>{
   //   for(let item of data){
@@ -96,6 +100,9 @@ const jwt=localStorage.getItem("jwt")
   //   }
   // }
 
+
+
+
   return (
     <Fragment className="createProductContainer ">
       <Typography
@@ -106,7 +113,8 @@ const jwt=localStorage.getItem("jwt")
         Add New Product
       </Typography>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit} 
+      
         className="createProductContainer min-h-screen"
       >
         <Grid container spacing={2}>
@@ -278,18 +286,15 @@ const jwt=localStorage.getItem("jwt")
               className="py-20"
               size="large"
               type="submit"
-            >
+              onClick={()=>{
+                alert("Product added succesfully");
+                window.location.href = "/admin/product/create"
+              }}
+           >
               Add New Product
             </Button>
-            {/* <Button
-              variant="contained"
-              sx={{ p: 1.8 }}
-              className="py-20 ml-10"
-              size="large"
-              onClick={()=>handleAddProducts(dressPage1)}
-            >
-              Add Products By Loop
-            </Button> */}
+             
+          
           </Grid>
         </Grid>
       </form>
@@ -298,3 +303,14 @@ const jwt=localStorage.getItem("jwt")
 };
 
 export default CreateProductForm;
+
+
+ {/* <Button
+              variant="contained"
+              sx={{ p: 1.8 }}
+              className="py-20 ml-10"
+              size="large"
+              onClick={()=>handleAddProducts(dressPage1)}
+            >
+              Add Products By Loop
+            </Button> */}
