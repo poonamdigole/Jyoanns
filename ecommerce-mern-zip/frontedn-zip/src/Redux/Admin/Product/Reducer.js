@@ -87,9 +87,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        products: state.products.filter(
-          (product) => product._id !== action.payload
-        ),
+        error:null,
+        deletedProduct:action.payload
+        // products: state.products.filter(
+        //   (item) => item._id!== action.payload
+        // ),
       };
     case DELETE_PRODUCT_FAILURE:
       return {

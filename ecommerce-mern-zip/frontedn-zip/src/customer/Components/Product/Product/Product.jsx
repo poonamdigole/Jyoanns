@@ -22,6 +22,7 @@ import { productdata } from "../../../../data";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {
+  createProduct,
   findProducts,
   findProductsByCategory,
 } from "../../../../Redux/Customers/Product/Action";
@@ -85,7 +86,7 @@ export default function Product() {
       minDiscount: disccount || 0,
       sort: sortValue || "price_low",
       pageNumber: pageNumber ,
-      pageSize: 10,
+      pageSize: 0,
       stock: stock,
     };
     dispatch(findProducts(data));
@@ -98,6 +99,7 @@ export default function Product() {
     sortValue,
     pageNumber,
     stock,
+    
   ]);
 
   const handleFilter = (value, sectionId) => {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { useNavigate, useParams } from "react-router-dom";
+import { json, useNavigate, useParams } from "react-router-dom";
 import ProductReviewCard from "./ProductReviewCard";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import HomeProductCard from "../../Home/HomeProductCard";
@@ -85,6 +85,9 @@ export default function ProductDetails() {
     const data = { productId, size: selectedSize.name };
     dispatch(addItemToCart({ data, jwt }));
     navigate("/cart");
+    if(!jwt){
+      navigate("/login")
+    }
   };
 
   useEffect(() => {
@@ -94,6 +97,10 @@ export default function ProductDetails() {
   }, [productId]);
 
   // console.log("reviews ",review)
+
+
+
+
   
   return (
     <div className="bg-white lg:px-20">
@@ -239,7 +246,6 @@ export default function ProductDetails() {
                 <Button
                   variant="contained"
                   type="submit"
-   
                   sx={{ padding: ".8rem 2rem", marginTop: "2rem" }}
                 >
                   Add To Cart

@@ -36,7 +36,7 @@ export default function LoginUserForm({ handleNext }) {
   };
 
   const loginwithgoogle = () => {
-    window.open("http://localhost:5454/auth/google/callback", "_self");
+    window.open("http://localhost:5454/auth/google/callback");
   };
 
   return (

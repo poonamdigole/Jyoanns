@@ -14,16 +14,17 @@ import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
 import DotsVertical from 'mdi-material-ui/DotsVertical'
 import CellphoneLink from 'mdi-material-ui/CellphoneLink'
 import AccountOutline from 'mdi-material-ui/AccountOutline'
+import { useState } from 'react'
 
 const salesData = [
   {
-    stats: '245k',
+    stats: '511k',
     title: 'Sales',
     color: 'primary',
     icon: <TrendingUp sx={{ fontSize: '1.75rem' }} />
   },
   {
-    stats: '12.5k',
+    stats: '15.5k',
     title: 'Customers',
     color: 'success',
     icon: <AccountOutline sx={{ fontSize: '1.75rem' }} />
@@ -41,6 +42,9 @@ const salesData = [
     icon: <CurrencyUsd sx={{ fontSize: '1.75rem' }} />
   }
 ]
+
+
+
 
 const renderStats = () => {
   return salesData.map((item, index) => (
@@ -69,6 +73,15 @@ const renderStats = () => {
 }
 
 const MonthlyOverview = () => {
+   
+  const [Sales,setSales] = useState([]);
+  const [customer, setCustomer] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [revenue, setRevenue] = useState([])
+
+
+  
+  
   return (
     <Card>
       <CardHeader

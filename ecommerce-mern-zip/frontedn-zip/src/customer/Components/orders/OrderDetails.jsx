@@ -89,6 +89,7 @@ const OrderDetails = () => {
                   </p>
                   <p>Seller: {item.product.brand}</p>
                   <p>₹{item.price} </p>
+
                 </div>
               </div>
             </Grid>

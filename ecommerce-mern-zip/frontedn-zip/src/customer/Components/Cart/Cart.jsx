@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import CartItem from "./CartItem";
 import { Badge, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -11,11 +11,15 @@ const Cart = () => {
   const navigate = useNavigate();
   const jwt = localStorage.getItem("jwt");
   const {cart}=useSelector(store=>store);
-  console.log("cart ",cart)
+  console.log("cart",cart)
 
   useEffect(() => {
     dispatch(getCart(jwt));
   }, [jwt]);
+
+  const [user, setUser] = useState({})
+
+  
   return (
     <div className="">
       {cart.cartItems.length>0 && <div className="lg:grid grid-cols-3 lg:px-16 relative">

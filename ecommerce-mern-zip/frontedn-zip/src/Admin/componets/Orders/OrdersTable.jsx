@@ -46,7 +46,7 @@ const OrdersTable = () => {
 
   useEffect(() => {
     dispatch(getOrders({ jwt }));
-  }, [jwt,adminsOrder.delivered, adminsOrder.shipped, adminsOrder.confirmed]);
+  }, [jwt, adminsOrder.delivered, adminsOrder.shipped, adminsOrder.confirmed]);
 
   // useEffect(()=>{
   //   dispatch(getOrders({jwt}))
@@ -77,19 +77,19 @@ const OrdersTable = () => {
   const handleConfirmedOrder = (orderId, index) => {
     handleUpdateStatusMenuClose(index);
     dispatch(confirmOrder(orderId));
-    setOrderStatus("CONFIRMED")
+    setOrderStatus("CONFIRMED");
   };
 
-  const handleShippedOrder = (orderId,index) => {
+  const handleShippedOrder = (orderId, index) => {
     handleUpdateStatusMenuClose(index);
-    dispatch(shipOrder(orderId))
-    setOrderStatus("ShIPPED")
+    dispatch(shipOrder(orderId));
+    setOrderStatus("ShIPPED");
   };
 
-  const handleDeliveredOrder = (orderId,index) => {
+  const handleDeliveredOrder = (orderId, index) => {
     handleUpdateStatusMenuClose(index);
-    dispatch(deliveredOrder(orderId))
-    setOrderStatus("DELIVERED")
+    dispatch(deliveredOrder(orderId));
+    setOrderStatus("DELIVERED");
   };
 
   const handleDeleteOrder = (orderId) => {
@@ -97,6 +97,11 @@ const OrdersTable = () => {
     dispatch(deleteOrder(orderId));
   };
 
+  const orderDetails = (orderName) =>{
+    handleUpdateStatusMenuClick();
+    dispatch(orderDetails(orderName))  
+  }
+ 
   //   useEffect(()=>{
   // setUpdateOrderStatus(item.orderStatus==="PENDING"?"PENDING": item.orderStatus==="PLACED"?"CONFIRMED":item.orderStatus==="CONFIRMED"?"SHIPPED":"DELEVERED")
   //   },[adminsOrder.orders])
@@ -155,8 +160,6 @@ const OrdersTable = () => {
             alignItems: "center",
             "& .MuiCardHeader-action": { mt: 0.6 },
           }}
-         
-         
         />
         <TableContainer>
           <Table sx={{ minWidth: 800 }} aria-label="table in dashboard">
@@ -180,10 +183,14 @@ const OrdersTable = () => {
                   sx={{ "&:last-of-type td, &:last-of-type th": { border: 0 } }}
                 >
                   <TableCell sx={{}}>
-                  <AvatarGroup max={4} sx={{justifyContent: 'start'}}>
-      {item.orderItems.map((orderItem)=><Avatar  alt={item.title} src={orderItem.product?.imageUrl} /> )}
-    </AvatarGroup>
-                    {" "}
+                    <AvatarGroup max={4} sx={{ justifyContent: "start" }}>
+                      {item.orderItems.map((orderItem) => (
+                        <Avatar
+                          alt={item.title}
+                          src={orderItem.product?.imageUrl}
+                        />
+                      ))}
+                    </AvatarGroup>{" "}
                   </TableCell>
 
                   <TableCell
@@ -223,7 +230,11 @@ const OrdersTable = () => {
                       label={item?.orderStatus}
                       size="small"
                       color={
-                        item.orderStatus === "PENDING" ? "info" :item?.orderStatus==="DELIVERED"? "success":"secondary"
+                        item.orderStatus === "PENDING"
+                          ? "info"
+                          : item?.orderStatus === "DELIVERED"
+                          ? "success"
+                          : "secondary"
                       }
                       className="text-white"
                     />
@@ -256,18 +267,26 @@ const OrdersTable = () => {
                       >
                         <MenuItem
                           onClick={() => handleConfirmedOrder(item?._id, index)}
-                          disabled={item.orderStatus==="DELEVERED" || item.orderStatus==="SHIPPED" || item.orderStatus==="CONFIRMED"}
+                          disabled={
+                            item.orderStatus === "DELEVERED" ||
+                            item.orderStatus === "SHIPPED" ||
+                            item.orderStatus === "CONFIRMED"
+                          }
                         >
                           CONFIRMED ORDER
-                          
                         </MenuItem>
                         <MenuItem
-                        disabled={item.orderStatus==="DELIVERED" || item.orderStatus==="SHIPPED"}
+                          disabled={
+                            item.orderStatus === "DELIVERED" ||
+                            item.orderStatus === "SHIPPED"
+                          }
                           onClick={() => handleShippedOrder(item._id, index)}
                         >
                           SHIPPED ORDER
                         </MenuItem>
-                        <MenuItem onClick={() => handleDeliveredOrder(item._id)}>
+                        <MenuItem
+                          onClick={() => handleDeliveredOrder(item._id)}
+                        >
                           DELIVERED ORDER
                         </MenuItem>
                       </Menu>
@@ -283,6 +302,8 @@ const OrdersTable = () => {
                     >
                       delete
                     </Button>
+
+
                   </TableCell>
                 </TableRow>
               ))}

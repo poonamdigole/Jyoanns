@@ -62,8 +62,8 @@ const ProductsTable = () => {
       maxPrice: 100000,
       minDiscount: 0,
       sort: sort || "price_low",
-      pageNumber:page || 1,
-      pageSize: 10,
+      pageNumber:page || 10,
+      pageSize: 8,
       stock: availability,
     };
     dispatch(findProducts(data));
