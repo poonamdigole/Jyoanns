@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { useNavigate, useParams } from "react-router-dom";
+import { json, useNavigate, useParams } from "react-router-dom";
 import ProductReviewCard from "./ProductReviewCard";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import HomeProductCard from "../../Home/HomeProductCard";
@@ -25,19 +25,19 @@ const product = {
   images: [
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg",
-      alt: "Two each of gray, white, and black shirts laying flat.",
+      alt: "Two each of gray, white, and black shirts laying flat."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg",
-      alt: "Model wearing plain black basic tee.",
+      alt: "Model wearing plain black basic tee."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg",
-      alt: "Model wearing plain gray basic tee.",
+      alt: "Model wearing plain gray basic tee."
     },
     {
       src: "https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg",
-      alt: "Model wearing plain white basic tee.",
+      alt: "Model wearing plain white basic tee."
     },
   ],
   colors: [
@@ -85,6 +85,9 @@ export default function ProductDetails() {
     const data = { productId, size: selectedSize.name };
     dispatch(addItemToCart({ data, jwt }));
     navigate("/cart");
+    if(!jwt){
+      navigate("/login")
+    }
   };
 
   useEffect(() => {
@@ -94,6 +97,10 @@ export default function ProductDetails() {
   }, [productId]);
 
   // console.log("reviews ",review)
+
+
+
+
   
   return (
     <div className="bg-white lg:px-20">
@@ -175,7 +182,8 @@ export default function ProductDetails() {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-6 sm:grid-cols-8 lg:grid-cols-10">
-                      {product.sizes.map((size) => (
+                      {
+                      product?.sizes.map((size) => (
                         <RadioGroup.Option
                           key={size.name}
                           value={size}

@@ -25,7 +25,8 @@ const createPaymentLink= async (orderId)=>{
           callback_url: `https://codewithzosh-ecommerce-mern.vercel.app/payment/${orderId}`,
           callback_method: 'get',
         };
-    
+
+       
         const paymentLink = await razorpay.paymentLink.create(paymentLinkRequest);
     
         const paymentLinkId = paymentLink.id;

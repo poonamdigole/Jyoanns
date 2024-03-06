@@ -7,6 +7,7 @@ import CardHeader from '@mui/material/CardHeader'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
+import { Link } from '@mui/material'
 
 // ** Icons Imports
 import DotsVertical from 'mdi-material-ui/DotsVertical'
@@ -104,7 +105,7 @@ const WeeklyOverview = () => {
           <Typography variant='body2'>Your sales performance is 45% 😎 better compared to last month</Typography>
         </Box>
         <Button fullWidth variant='contained'>
-          Details
+         Details
         </Button>
       </CardContent>
     </Card>

@@ -43,6 +43,7 @@ const menu = [
   {name:"Weekly Overview",path:"/admin"},
   {name:"Monthly Overview",path:"/admin"},
   {name:"Add Product",path:"/admin/product/create"},
+  {name:"Home Page", path:"/"}
 ];
 
 export default function AdminPannel() {
