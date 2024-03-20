@@ -24,7 +24,7 @@ import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 import { Grid, Select } from "@mui/material";
-import { dressPage1 } from "../../../Data/dress/page1";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   confirmOrder,
@@ -97,10 +97,10 @@ const OrdersTable = () => {
     dispatch(deleteOrder(orderId));
   };
 
-  const orderDetails = (orderName) =>{
-    handleUpdateStatusMenuClick();
-    dispatch(orderDetails(orderName))  
-  }
+  // const orderDetails = (orderName) =>{
+  //   handleUpdateStatusMenuClick();
+  //   dispatch(orderDetails(orderName))  
+  // }
  
   //   useEffect(()=>{
   // setUpdateOrderStatus(item.orderStatus==="PENDING"?"PENDING": item.orderStatus==="PLACED"?"CONFIRMED":item.orderStatus==="CONFIRMED"?"SHIPPED":"DELEVERED")
@@ -305,6 +305,8 @@ const OrdersTable = () => {
 
 
                   </TableCell>
+                
+                    
                 </TableRow>
               ))}
             </TableBody>

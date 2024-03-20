@@ -62,7 +62,7 @@ const ProductsTable = () => {
       maxPrice: 100000,
       minDiscount: 0,
       sort: sort || "price_low",
-      pageNumber:page || 10,
+      pageNumber:2 || 10,
       pageSize: 8,
       stock: availability,
     };
@@ -104,8 +104,8 @@ const ProductsTable = () => {
                 label="Category"
                 onChange={(e) => handleFilterChange(e, "category")}
               >
-                <MenuItem value={"pant"}>Men's Pants</MenuItem>
-                <MenuItem value={"mens_kurta"}>Men's Kurta</MenuItem>
+                {/* <MenuItem value={"pant"}>Men's Pants</MenuItem> */}
+                {/* <MenuItem value={"mens_kurta"}>Men's Kurta</MenuItem> */}
                 <MenuItem value={"saree"}>Saree</MenuItem>
                 <MenuItem value={"lengha_choli"}>Lengha Choli</MenuItem>
               </Select>
@@ -211,13 +211,13 @@ const ProductsTable = () => {
         </TableContainer>
       </Card>
       <Card className="mt-2 border">
-        {/* <Pagination
+        <Pagination
           className="py-5 border w-auto"
           size="large"
           count={10}
           color="primary"
           onChange={handlePaginationChange}
-        /> */}
+        />
 
         <div className="mx-auto px-4 py-5 flex justify-center shadow-lg rounded-md">
           <Pagination
@@ -225,7 +225,7 @@ const ProductsTable = () => {
             color="primary"
             className=""
             onChange={handlePaginationChange}
-            // value={page}
+            value={page}
           />
         </div>
       </Card>
