@@ -1,13 +1,12 @@
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
 
 const HomeProductCard = ({ product }) => {
   const navigate = useNavigate();
-
+  // onClick={() => navigate(`/men/clothing/mens_kurta`)}
   return (
     <div
-      onClick={() => navigate(`/men/clothing/mens_kurta`)}
+   
       className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3"
     >
       <div className="h-[13rem] w-[10rem]">
@@ -22,7 +21,8 @@ const HomeProductCard = ({ product }) => {
         <h3 className="text-lg font-medium text-gray-900">
           {product?.brand || product?.title}
         </h3>
-        <p className="mt-2 text-sm text-gray-500">{product?.title}</p>
+        <p className="mt-2 text-sm text-gray-500">{product?.title} {product?.URI}</p>
+
       </div>
     </div>
   );

@@ -34,8 +34,8 @@ const Order = () => {
               {orderStatus.map((option, optionIdx) => (
                 <div key={option.value} className="flex items-center">
                   <input
-                    //   id={`filter-${section.id}-${optionIdx}`}
-                    //   name={`${section.id}[]`}
+                      // id={`filter-${section.id}-${optionIdx}`}
+                      // name={`${section.id}[]`}
                     defaultValue={option.value}
                     type="checkbox"
                     defaultChecked={option.checked}

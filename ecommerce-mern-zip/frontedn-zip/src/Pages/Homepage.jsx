@@ -9,15 +9,23 @@ import { kurtaPage1 } from "../Data/Kurta/kurta";
 import { mensShoesPage1 } from "../Data/shoes";
 import { mens_kurta } from "../Data/Men/men_kurta";
 import { lengha_page1 } from "../Data/Women/LenghaCholi";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 const Homepage = () => {
+  
+  
+  // const loadProducts = async()=>{
+  //   const response = await axios.get(/products)
+  // }
 
   return (
     <div className="">
       <HomeCarousel images={homeCarouselData} />
 
-      <div className="space-y-10 py-20">
-      <HomeProductSection data={mens_kurta} section={"Men's Kurta"} />
+      <div className="space-y-10 py-20 ">
+          <HomeProductSection  data={mens_kurta} section={"Men's Kurta"} />
         <HomeProductSection data={mensShoesPage1} section={"Men's Shoes"} />
         <HomeProductSection data={lengha_page1} section={"Lengha Choli"} />
         <HomeProductSection data={sareePage1} section={"Saree"} />

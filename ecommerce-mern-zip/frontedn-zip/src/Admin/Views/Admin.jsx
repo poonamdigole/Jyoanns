@@ -43,12 +43,12 @@ const Dashboard = () => {
             <Grid item xs={12} md={8}>
               <MonthlyOverview />
             </Grid>
-            <Grid item xs={12} md={6} lg={4}>
+            {/* <Grid item xs={12} md={6} lg={4}>
               <WeeklyOverview />
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <TotalEarning />
-            </Grid>
+            </Grid> 
             <Grid item xs={12} md={6} lg={4}>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -94,7 +94,7 @@ const Dashboard = () => {
                   />
                 </Grid>
               </Grid>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} md={6} lg={4}>
             <CustomersTable />
             </Grid>
@@ -108,9 +108,9 @@ const Dashboard = () => {
               <SalesOverTime/>
             </Grid>
            
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <CustomersTable />
-            </Grid>
+            </Grid> */}
           </Grid>
         </AdminPannel>
       </ThemeProvider>
