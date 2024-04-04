@@ -14,85 +14,85 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import react, { useState, useEffect } from "react";
 
-const rows = [
-  {
-    age: 27,
-    status: 'current',
-    date: '09/27/2018',
-    name: 'Sally Quinn',
-    salary: '$19586.23',
-    email: 'eebsworth2m@sbwire.com',
-    designation: 'Human Resources Assistant',
-    image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
-  },
-  {
-    age: 61,
-    date: '09/23/2016',
-    salary: '$23896.35',
-    status: 'professional',
-    name: 'Margaret Bowers',
-    email: 'kocrevy0@thetimes.co.uk',
-    designation: 'Nuclear Power Engineer',
-    image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
-  },
-  {
-    age: 59,
-    date: '10/15/2017',
-    name: 'Minnie Roy',
-    status: 'rejected',
-    salary: '$18991.67',
-    email: 'ediehn6@163.com',
-    designation: 'Environmental Specialist',
-    image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
-  },
-  {
-    age: 30,
-    date: '06/12/2018',
-    status: 'resigned',
-    salary: '$19252.12',
-    name: 'Ralph Leonard',
-    email: 'dfalloona@ifeng.com',
-    designation: 'Sales Representative',
-    image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
-  },
-  {
-    age: 66,
-    status: 'applied',
-    date: '03/24/2018',
-    salary: '$13076.28',
-    name: 'Annie Martin',
-    designation: 'Operator',
-    email: 'sganderton2@tuttocitta.it',
-    image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
-  },
-  {
-    age: 33,
-    date: '08/25/2017',
-    salary: '$10909.52',
-    name: 'Adeline Day',
-    status: 'professional',
-    email: 'hnisius4@gnu.org',
-    designation: 'Senior Cost Accountant'
-  },
-  {
-    age: 61,
-    status: 'current',
-    date: '06/01/2017',
-    salary: '$17803.80',
-    name: 'Lora Jackson',
-    designation: 'Geologist',
-    email: 'ghoneywood5@narod.ru'
-  },
-  {
-    age: 22,
-    date: '12/03/2017',
-    salary: '$12336.17',
-    name: 'Rodney Sharp',
-    status: 'professional',
-    designation: 'Cost Accountant',
-    email: 'dcrossman3@google.co.jp'
-  }
-]
+// const rows = [
+//   {
+//     age: 27,
+//     status: 'current',
+//     date: '09/27/2018',
+//     name: 'Sally Quinn',
+//     salary: '$19586.23',
+//     email: 'eebsworth2m@sbwire.com',
+//     designation: 'Human Resources Assistant',
+//     image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
+//   },
+//   {
+//     age: 61,
+//     date: '09/23/2016',
+//     salary: '$23896.35',
+//     status: 'professional',
+//     name: 'Margaret Bowers',
+//     email: 'kocrevy0@thetimes.co.uk',
+//     designation: 'Nuclear Power Engineer',
+//     image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
+//   },
+//   {
+//     age: 59,
+//     date: '10/15/2017',
+//     name: 'Minnie Roy',
+//     status: 'rejected',
+//     salary: '$18991.67',
+//     email: 'ediehn6@163.com',
+//     designation: 'Environmental Specialist',
+//     image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
+//   },
+//   {
+//     age: 30,
+//     date: '06/12/2018',
+//     status: 'resigned',
+//     salary: '$19252.12',
+//     name: 'Ralph Leonard',
+//     email: 'dfalloona@ifeng.com',
+//     designation: 'Sales Representative',
+//     image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
+//   },
+//   {
+//     age: 66,
+//     status: 'applied',
+//     date: '03/24/2018',
+//     salary: '$13076.28',
+//     name: 'Annie Martin',
+//     designation: 'Operator',
+//     email: 'sganderton2@tuttocitta.it',
+//     image:"https://rukminim1.flixcart.com/image/832/832/xif0q/lehenga-choli/c/v/q/free-half-sleeve-sadhna-kedar-fab-original-imagpawdqwjqz6vt.jpeg?q=70"
+//   },
+//   {
+//     age: 33,
+//     date: '08/25/2017',
+//     salary: '$10909.52',
+//     name: 'Adeline Day',
+//     status: 'professional',
+//     email: 'hnisius4@gnu.org',
+//     designation: 'Senior Cost Accountant'
+//   },
+//   {
+//     age: 61,
+//     status: 'current',
+//     date: '06/01/2017',
+//     salary: '$17803.80',
+//     name: 'Lora Jackson',
+//     designation: 'Geologist',
+//     email: 'ghoneywood5@narod.ru'
+//   },
+//   {
+//     age: 22,
+//     date: '12/03/2017',
+//     salary: '$12336.17',
+//     name: 'Rodney Sharp',
+//     status: 'professional',
+//     designation: 'Cost Accountant',
+//     email: 'dcrossman3@google.co.jp'
+//   }
+// ]
 
 const Customers = () => {
   const navigate = useNavigate();
@@ -104,18 +104,18 @@ const Customers = () => {
 
   const loadUsers = async () => {
     try {
-      const response = await axios.get("/auth/users");
+      const response = await axios.get("/api/users");
 
-      setUsers(response?.data?.data);
-      console.log(response?.data?.data);
+      setUsers(response?.data);
+      console.log(response?.data);
     } catch (err) {
       console.log(err.message);
     }
   };
 
-  // useEffect(() => {
-  //   Customers();
-  // }, []);
+  useEffect(() => {
+    loadUsers()
+  }, []);
 
 
  
@@ -137,14 +137,17 @@ const Customers = () => {
                 <TableCell>User Id</TableCell>
                 <TableCell>Image</TableCell>
                 <TableCell>Name</TableCell>
+                <TableCell>mobile</TableCell>
                 <TableCell>Email</TableCell>
+                <TableCell>ID</TableCell>
+                <TableCell>allcustomers</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows?.map((item, index) => (
+              {users?.map((item, index) => (
                 <TableRow
                   hover
-                  key={item.name}
+                  key={index}
                   sx={{ "&:last-of-type td, &:last-of-type th": { border: 0 } }}
                 >
                   <TableCell>{index + 1}</TableCell>
@@ -152,10 +155,16 @@ const Customers = () => {
                     {" "}
                     <Avatar alt={item.name} src={item.image} />{" "}
                   </TableCell>
-                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.firstName} {item.lastName}</TableCell>
+                  <TableCell>{item.mobile} </TableCell>
+
+                  
                   <TableCell>{item.email}</TableCell>
+                  <TableCell>{item._id} {item.order_id}</TableCell>
+                  <TableCell>{users.length}</TableCell>
                 </TableRow>
               ))}
+                
             </TableBody>
           </Table>
         </TableContainer>

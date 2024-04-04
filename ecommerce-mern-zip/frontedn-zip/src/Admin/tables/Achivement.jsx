@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import { ThemeProvider, createTheme, styled, useTheme } from '@mui/material/styles'
+import { useNavigate } from 'react-router-dom'
 
 // Styled component for the triangle shaped background image
 const TriangleImg = styled('img')({
@@ -29,6 +30,8 @@ const Achivement = () => {
 
   const imageSrc = theme.palette.mode === 'light' ? 'triangle-light.png' : 'triangle-dark.png'
 
+  const navigate = useNavigate();
+
   return (
   
        <Card sx={{ position: 'relative' }}>
@@ -41,7 +44,9 @@ const Achivement = () => {
         <Typography variant='h5' sx={{ my: 3.1, color: 'primary.main' }}>
           420.8k
         </Typography>
-        <Button size='small' variant='contained'>
+        <Button size='small' variant='contained' onClick={()=>{
+         navigate("/admin/orders")
+        }}>
           View Sales
         </Button>
         <TriangleImg alt='triangle background' src={`/images/misc/${imageSrc}`} />

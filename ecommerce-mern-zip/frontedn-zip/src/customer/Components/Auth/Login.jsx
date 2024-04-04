@@ -36,7 +36,7 @@ export default function LoginUserForm({ handleNext }) {
   };
 
   const loginwithgoogle = () => {
-    window.open("http://localhost:5454/auth/google/callback");
+    window.open("http://localhost:5454/auth/google/callback","_self");
   };
 
   return (
@@ -103,14 +103,14 @@ export default function LoginUserForm({ handleNext }) {
           {auth.error ? auth.error : auth.user ? "Register Success" : ""}
         </Alert>
       </Snackbar>
-      <div className="flex justify-center mt-2">
+      {/* <div className="flex justify-center mt-2">
         <button
           className="btn shadow-2xl p-2 text-lg px-11 w-96 "
           onClick={loginwithgoogle}
         >
           SIGN IN WITH GOOGLE
         </button>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

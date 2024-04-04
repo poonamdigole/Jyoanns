@@ -6,6 +6,7 @@ export const mens_kurta=[
         "color": "Green",
         "discountedPrice": 499,
         "price": 1499,
+        "URI":"/men/clothing/mens_kurta",
         "discountPersent": 66,
         "size": [
             {
@@ -25,6 +26,7 @@ export const mens_kurta=[
           "topLavelCategory": "Men",
           "secondLavelCategory": "Clothing",
           "thirdLavelCategory": "mens_kurta",
+
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     },
     {
