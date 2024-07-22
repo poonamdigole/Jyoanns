@@ -25,7 +25,7 @@ const Homepage = () => {
       <HomeCarousel images={homeCarouselData} />
 
       <div className="space-y-10 py-20 ">
-          <HomeProductSection  data={mens_kurta} section={"Men's Kurta"} />
+        <Link to="" ><HomeProductSection  data={mens_kurta} section={"Men's Kurta"} /></Link>
         <HomeProductSection data={mensShoesPage1} section={"Men's Shoes"} />
         <HomeProductSection data={lengha_page1} section={"Lengha Choli"} />
         <HomeProductSection data={sareePage1} section={"Saree"} />

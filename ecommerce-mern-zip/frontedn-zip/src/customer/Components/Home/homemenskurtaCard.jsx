@@ -1,17 +1,11 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from 'react'
 
-
-const HomeProductCard = ({ product , link }) => {
-  const navigate = useNavigate();
-  
+function homemenskurtaCard() {
   return (
     <div
-    onClick={() => navigate(`${product.link}`)}
+    onClick={() => navigate(`/men/clothing/mens_kurta`)}
       className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3"
     >
-     <Link to={link}> 
-     <div>
       <div className="h-[13rem] w-[10rem]">
         <img
           className="object-cover object-top w-full h-full"
@@ -27,9 +21,8 @@ const HomeProductCard = ({ product , link }) => {
         <p className="mt-2 text-sm text-gray-500">{product?.title} {product?.URI}</p>
 
       </div>
-    </div></Link>
     </div>
-  );
-};
+  )
+}
 
-export default HomeProductCard;
+export default homemenskurtaCard;

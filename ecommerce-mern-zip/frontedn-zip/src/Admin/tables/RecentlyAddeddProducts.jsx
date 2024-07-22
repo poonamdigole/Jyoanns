@@ -4,12 +4,9 @@
 // import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
-
-
 // const RecentlyAddeddProducts = () => {
 //     const navigate = useNavigate();
 //     const [item, setItem] = useState([]);
-   
 
 //     const loadProducts = async() => {
 //         try {
@@ -17,7 +14,7 @@
 
 //                 setItem(response?.data);
 //                 console.log(response?.data?.content);
-            
+
 //         } catch (err) {
 //             console.log(err.message);
 //         }
@@ -27,9 +24,6 @@
 //       loadProducts();
 //       console.log(loadProducts)
 //     }, []);
-
-   
-  
 
 //     return (
 //         <Card>
@@ -56,7 +50,7 @@
 //                     <TableBody>
 //                         {
 //                    item?.content?.map((item)=>{
-                           
+
 //                                 <TableRow hover key={item.title} sx={{ '&:last-of-type td, &:last-of-type th': { border: 0 } }}>
 //                                     <TableCell> <Avatar alt={item.title} src={item.imageUrl} /> </TableCell>
 //                                     <TableCell sx={{ py: theme => `${theme.spacing(0.5)} !important` }}>
@@ -69,7 +63,7 @@
 //                                     <TableCell>{item.discountedPrice}</TableCell>
 //                                     <TableCell>{item.quantity}</TableCell>
 //                                 </TableRow>
-                            
+
 //                         })}
 //                     </TableBody>
 //                 </Table>
@@ -181,16 +175,16 @@
 
 // //   // const orderDetails = (orderName) =>{
 // //   //   handleUpdateStatusMenuClick();
-// //   //   dispatch(orderDetails(orderName))  
+// //   //   dispatch(orderDetails(orderName))
 // //   // }
- 
+
 // //   //   useEffect(()=>{
 // //   // setUpdateOrderStatus(item.orderStatus==="PENDING"?"PENDING": item.orderStatus==="PLACED"?"CONFIRMED":item.orderStatus==="CONFIRMED"?"SHIPPED":"DELEVERED")
 // //   //   },[adminsOrder.orders])
 
 // //   return (
 // //     <Box>
-     
+
 // //       <Card className="mt-2">
 // //         <CardHeader
 // //           title="Recently Added Products"
@@ -342,17 +336,15 @@
 // //                       delete
 // //                     </Button>
 
-
 // //                   </TableCell>
-                
-                    
+
 // //                 </TableRow>
 // //               ))}
 // //             </TableBody>
 // //           </Table>
 // //         </TableContainer>
 // //       </Card>
-      
+
 // //     </Box>
 // //   );
 // // };
@@ -360,162 +352,169 @@
 // // export default OrdersTable;
 
 import {
-    Avatar,
-    Box,
-    Button,
-    Card,
-    CardHeader,
-    FormControl,
-    Grid,
-    InputLabel,
-    MenuItem,
-    Pagination,
-    Select,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    Typography,
-  } from "@mui/material";
-  
-  import React from "react";
-  import { dressPage1 } from "../../Data/dress/page1";
-  import { useLocation, useNavigate } from "react-router-dom";
-  import { useState } from "react";
-  import { useEffect } from "react";
-  import { useDispatch, useSelector } from "react-redux";
-  import { deleteProduct, findProducts } from "./../../Redux/Customers/Product/Action";
-  
-  const RecentlyAddeddProducts = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { customersProduct } = useSelector((store) => store);
-    const [filterValue, setFilterValue] = useState({
-      availability: "",
-      category: "",
-      sort: "",
-    });
-  
-    // query 
-    const searchParams = new URLSearchParams(location.search);
-    const availability = searchParams.get("availability");
-    const category = searchParams.get("category");
-    const sort = searchParams.get("sort");
-    const page = searchParams.get("page");
-  
-  
-    const handlePaginationChange = (event, value) => {
-      searchParams.set("page", value-1);
-      const query = searchParams.toString();
-      navigate({ search: `?${query}` });
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Pagination,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+
+import React from "react";
+import { dressPage1 } from "../../Data/dress/page1";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteProduct,
+  findProducts,
+} from "./../../Redux/Customers/Product/Action";
+
+const RecentlyAddeddProducts = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { customersProduct } = useSelector((store) => store);
+  const [filterValue, setFilterValue] = useState({
+    availability: "",
+    category: "",
+    sort: "",
+  });
+
+  // query
+  const searchParams = new URLSearchParams(location.search);
+  const availability = searchParams.get("availability");
+  const category = searchParams.get("category");
+  const sort = searchParams.get("sort");
+  const page = searchParams.get("page");
+
+  const handlePaginationChange = (event, value) => {
+    searchParams.set("page", value - 1);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
+
+  useEffect(() => {
+    // setFilterValue({ availability, category, sort });
+    const data = {
+      category: category || "",
+      colors: [],
+      sizes: [],
+      minPrice: 0,
+      maxPrice: 100000,
+      minDiscount: 0,
+      sort: sort || "price_low",
+      pageNumber: 1 || 10,
+      pageSize: 8,
+      stock: availability,
     };
-  
-    useEffect(() => {
-      // setFilterValue({ availability, category, sort });
-      const data = {
-        category:category || "",
-        colors: [],
-        sizes: [],
-        minPrice: 0,
-        maxPrice: 100000,
-        minDiscount: 0,
-        sort: sort || "price_low",
-        pageNumber:1 || 10,
-        pageSize: 8,
-        stock: availability,
-      };
-      dispatch(findProducts(data));
-    }, [availability, category, sort,page,customersProduct.deleteProduct]);
-  
-    const handleFilterChange = (e, sectionId) => {
-      console.log(e.target.value, sectionId);
-      setFilterValue((values) => ({ ...values, [sectionId]: e.target.value }));
-      searchParams.set(sectionId, e.target.value);
-      const query = searchParams.toString();
-      navigate({ search: `?${query}` });
-    };
-  
-    const handleDeleteProduct=(productId)=>{
-      console.log("delete product ",productId)
-      dispatch(deleteProduct(productId))
-    }
-  
-    return (
-      <Box width={"100%"}>
-        <Card className="p-3">
-          
-          <Grid container spacing={2}>
-           
-          
-            
-          </Grid>
-        </Card>
-        <Card className="mt-2">
-          <CardHeader
-            title="All Products"
-            sx={{
-              pt: 2,
-              alignItems: "center",
-              "& .MuiCardHeader-action": { mt: 0.6 },
-            }}
-          />
-          <TableContainer>
-            <Table sx={{ minWidth: 800 }} aria-label="table in dashboard">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Image</TableCell>
-                  <TableCell>Title</TableCell>
-                  <TableCell sx={{ textAlign: "center" }}>Category</TableCell>
-                  <TableCell sx={{ textAlign: "center" }}>Price</TableCell>
-                  <TableCell sx={{ textAlign: "center" }}>Quantity</TableCell>
-                  <TableCell sx={{ textAlign: "center" }}>Delete</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {customersProduct?.products?.content?.map((item) => (
-                  <TableRow
-                    hover
-                    key={item.name}
-                    sx={{ "&:last-of-type td, &:last-of-type th": { border: 0 } }}
-                    
+    dispatch(findProducts(data));
+  }, [availability, category, sort, page, customersProduct.deleteProduct]);
+
+  const handleFilterChange = (e, sectionId) => {
+    console.log(e.target.value, sectionId);
+    setFilterValue((values) => ({ ...values, [sectionId]: e.target.value }));
+    searchParams.set(sectionId, e.target.value);
+    const query = searchParams.toString();
+    navigate({ search: `?${query}` });
+  };
+
+  const handleDeleteProduct = (productId) => {
+    console.log("delete product ", productId);
+    dispatch(deleteProduct(productId));
+  };
+
+  return (
+    <Box width={"100%"}>
+      <Card className="p-3">
+        <Grid container spacing={2}></Grid>
+      </Card>
+      <Card className="mt-2">
+        <CardHeader
+          title="All Products"
+          sx={{
+            pt: 2,
+            alignItems: "center",
+            "& .MuiCardHeader-action": { mt: 0.6 },
+          }}
+        />
+        <TableContainer>
+          <Table sx={{ minWidth: 800 }} aria-label="table in dashboard">
+            <TableHead>
+              <TableRow>
+                <TableCell>Image</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Category</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Price</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Quantity</TableCell>
+                <TableCell sx={{ textAlign: "center" }}>Delete</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {customersProduct?.products?.content?.map((item) => (
+                <TableRow
+                  hover
+                  key={item.name}
+                  sx={{ "&:last-of-type td, &:last-of-type th": { border: 0 } }}
+                >
+                  <TableCell>
+                    {" "}
+                    <Avatar alt={item.titel} src={item.imageUrl} />{" "}
+                  </TableCell>
+
+                  <TableCell
+                    sx={{ py: (theme) => `${theme.spacing(0.5)} !important` }}
                   >
-                    <TableCell>
-                      {" "}
-                      <Avatar alt={item.titel} src={item.imageUrl} />{" "}
-                    </TableCell>
-  
-                    <TableCell
-                      sx={{ py: (theme) => `${theme.spacing(0.5)} !important` }}
+                    <Box sx={{ display: "flex", flexDirection: "column" }}>
+                      <Typography
+                        sx={{
+                          fontWeight: 500,
+                          fontSize: "0.875rem !important",
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                      <Typography variant="caption">{item.brand}</Typography>
+                    </Box>
+                  </TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>
+                    {item.category.name}
+                  </TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>
+                    {item.discountedPrice}
+                  </TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>
+                    {item.quantity}
+                  </TableCell>
+
+                  <TableCell sx={{ textAlign: "center" }}>
+                    <Button
+                      variant="text"
+                      onClick={() => handleDeleteProduct(item._id)}
                     >
-                      <Box sx={{ display: "flex", flexDirection: "column" }}>
-                        <Typography
-                          sx={{
-                            fontWeight: 500,
-                            fontSize: "0.875rem !important",
-                          }}
-                        >
-                          {item.title}
-                        </Typography>
-                        <Typography variant="caption">{item.brand}</Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell sx={{ textAlign: "center" }}>{item.category.name}</TableCell>
-                    <TableCell sx={{ textAlign: "center" }}>{item.discountedPrice}</TableCell>
-                    <TableCell sx={{ textAlign: "center" }}>{item.quantity}</TableCell>
-                
-                    <TableCell sx={{ textAlign: "center" }}>
-                      <Button variant="text" onClick={()=>handleDeleteProduct(item._id)}>Delete</Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Card>
-        {/* <Card className="mt-2 border">
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Card>
+      {/* <Card className="mt-2 border">
           <Pagination
             className="py-5 border w-auto"
             size="large"
@@ -523,8 +522,8 @@ import {
             color="primary"
             onChange={handlePaginationChange}
           /> */}
-  
-          {/* <div className="mx-auto px-4 py-5 flex justify-center shadow-lg rounded-md">
+
+      {/* <div className="mx-auto px-4 py-5 flex justify-center shadow-lg rounded-md">
             <Pagination
               count={customersProduct.products?.totalPages}
               color="primary"
@@ -533,11 +532,9 @@ import {
               value={page}
             />
           </div> */}
-        {/* </Card> */}
-      </Box>
-    );
-  };
-  
-  export default RecentlyAddeddProducts;
-  
+      {/* </Card> */}
+    </Box>
+  );
+};
 
+export default RecentlyAddeddProducts;

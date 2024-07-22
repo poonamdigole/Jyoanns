@@ -6,6 +6,7 @@ export const sareePage1=[
         "color": "Purple",
         "selling_price": "₹789",
         "price": "₹3,999",
+        link:"/product/66647ee5296f7f1827b1e9a5",
         "disscount": "80% off"
     },
     {

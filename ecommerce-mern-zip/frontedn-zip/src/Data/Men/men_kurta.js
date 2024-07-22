@@ -6,7 +6,7 @@ export const mens_kurta=[
         "color": "Green",
         "discountedPrice": 499,
         "price": 1499,
-        "URI":"/men/clothing/mens_kurta",
+        link: "/product/65fb37aba2b2eb850cd89fb2",
         "discountPersent": 66,
         "size": [
             {
